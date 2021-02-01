@@ -13,27 +13,45 @@ describe("integer to roman numeral converter", () => {
     }).toEqual("Cinco");
   });
 
-  test("should return Cinco for 11", () => {
+  test("should return Onze for 11", () => {
     expect(() => {
-      integerToWords(5);
+      integerToWords(11);
     }).toEqual("Onze");
   });
 
-  test("should return Cinco for Vinte e Sete", () => {
+  test("should return Vinte e Sete for 27", () => {
     expect(() => {
       integerToWords(27);
-    }).toEqual("Cinco");
+    }).toEqual("Vinte e Sete");
   });
 
-  test("should return Cinco for 5", () => {
+  test("should return Cento e Vinte for 120", () => {
     expect(() => {
-      integerToWords(5);
-    }).toEqual("Cinco");
+      integerToWords(120);
+    }).toEqual("Cento e Vinte");
   });
 
-  test("should return Cinco for 5", () => {
+  test("should return Mil Cento e Vinte for 1120", () => {
     expect(() => {
-      integerToWords(5);
-    }).toEqual("Cinco");
+      integerToWords(1120);
+    }).toEqual("Mil Cento e Vinte");
+  });
+
+  test("should return Dez Mil Cento e Vinte for 10120", () => {
+    expect(() => {
+      integerToWords(10120);
+    }).toEqual("Dez Mil Cento e Vinte");
+  });
+
+  test("should return Cento e Um Mil e Duzentos for 101200", () => {
+    expect(() => {
+      integerToWords(10120);
+    }).toEqual("Cento e Um Mil e Duzentos");
+  });
+
+  test("should return Um Bilhão Trezentos e Quarenta e Dois Milhões for 1342000000", () => {
+    expect(() => {
+      integerToWords(1342000000);
+    }).toEqual("Um Bilhão Trezentos e Quarenta e Dois Milhões");
   });
 });
