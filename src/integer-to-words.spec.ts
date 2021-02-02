@@ -418,17 +418,21 @@ describe("Conversão de inteiro para extenso", () => {
     });
   });
 
-  describe("números com 7 dígitos - Milhão", () => {
-    test("deve retornar Cento e Dez Mil Cento e Noventa e Cinco para o numero 110195", () => {
-      expect(integerToWords(110195)).toEqual("Cento e Dez Mil Cento e Noventa e Cinco");
+  describe("números com 7 8 e 9 dígitos - Milhão", () => {
+    test("deve retornar Um Milhão Quatrocentos e Cinqüenta e Oito Mil Novecentos e Oitenta e Cinco para o numero 1458985", () => {
+      expect(integerToWords(1458985)).toEqual(
+        "Um Milhão Quatrocentos e Cinquenta e Oito Mil Novecentos e Oitenta e Cinco"
+      );
     });
 
-    test("deve retornar Duzentos e Quarenta e Cinco Mil Novecentos e Noventa e Oito para o numero 245998", () => {
-      expect(integerToWords(245998)).toEqual("Duzentos e Quarenta e Cinco Mil Novecentos e Noventa e Oito");
+    test("deve retornar Vinte Milhões Seiscentos e Oitenta e Cinco Mil Duzentos para o numero 20685200", () => {
+      expect(integerToWords(20685200)).toEqual("Vinte Milhões Seiscentos e Oitenta e Cinco Mil Duzentos");
     });
 
-    test("deve retornar Quatrocentos e Vinte Mil Duzentos e Cinquenta Oito para o numero 420258", () => {
-      expect(integerToWords(420258)).toEqual("Quatrocentos e Vinte Mil Duzentos e Cinquenta e Oito");
+    test("deve retornar Cento e Vinte Milhões Seiscentos e Sessenta e Seis Mil Novecentos e Noventa e Nove para o numero 120666999", () => {
+      expect(integerToWords(120666999)).toEqual(
+        "Cento e Vinte Milhões Seiscentos e Sessenta e Seis Mil Novecentos e Noventa e Nove"
+      );
     });
   });
 });
