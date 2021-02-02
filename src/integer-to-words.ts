@@ -78,39 +78,28 @@ export function integerToWords(number: number): string {
 
   function handleThreeDigits(number: number) {
     const divisibleBy10 = divisibleBy(10, number);
+    const divisibleBy100 = divisibleBy(100, number);
     const numberParts = number.toString().split("");
+    const [firstNumber, secondNumber] = [+numberParts[0], +(numberParts[1] + numberParts[2])];
     let newMessage = "";
 
-    // const actions: Action[] = [
-    //   { match: !divisibleBy10 && number <= 19, execute: () => elevenToNineTeen[+numberParts[1] - 1] },
-    //   {
-    //     match: !divisibleBy10 && number > 19,
-    //     execute: () => `${tenToNinety[+numberParts[0] - 1]} e ${decimals[+numberParts[1]]}`,
-    //   },
-    //   { match: true, execute: () => tenToNinety[number / 10 - 1] },
-    // ];
+    const actions: Action[] = [
+      { match: divisibleBy10 && divisibleBy100, execute: () => oneHundredToNineHundred[number / 100 - 1] },
+      {
+        match: divisibleBy10,
+        execute: () => `${oneHundredToNineHundred[firstNumber - 1]} e ${tenToNinety[secondNumber / 10 - 1]}`,
+      },
+      {
+        match: !divisibleBy10,
+        execute: () =>
+          `${oneHundredToNineHundred[firstNumber - 1]} e ${
+            secondNumber < 10 ? handleLessThan10(secondNumber) : handleTwoDigits(secondNumber)
+          }`,
+      },
+    ];
 
-    // const action = actions.find((action) => action.match);
-    // newMessage = action.execute();
-
-    if (divisibleBy10) {
-      const divisibleBy100 = number % 100 === 0;
-
-      if (divisibleBy100) {
-        newMessage = oneHundredToNineHundred[number / 100 - 1];
-      } else {
-        const newArr = [+numberParts[0], +(numberParts[1] + numberParts[2])];
-        newMessage = `${oneHundredToNineHundred[newArr[0] - 1]} e ${tenToNinety[newArr[1] / 10 - 1]}`;
-      }
-    }
-    if (!divisibleBy10) {
-      const newArr = [+numberParts[0], +(numberParts[1] + numberParts[2])];
-      const [firstNumber, secondNumber] = newArr;
-
-      newMessage = `${oneHundredToNineHundred[firstNumber - 1]} e ${
-        secondNumber < 10 ? handleLessThan10(secondNumber) : handleTwoDigits(secondNumber)
-      }`;
-    }
+    const action = actions.find((action) => action.match);
+    newMessage = action.execute();
     return newMessage;
   }
 
@@ -134,6 +123,7 @@ console.log(integerToWords(110));
 
 console.log(integerToWords(111));
 console.log(integerToWords(123));
+console.log(integerToWords(120));
 console.log(integerToWords(240));
 console.log(integerToWords(666));
 console.log(integerToWords(852));
