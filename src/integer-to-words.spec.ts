@@ -154,6 +154,80 @@ describe("mais números com 2 dígitos", () => {
   });
 });
 
+describe("números do 101 a 109 e 111 a 119", () => {
+  test("deve retornar Cento e Um para o numero 101", () => {
+    expect(integerToWords(101)).toEqual("Cento e Um");
+  });
+
+  test("deve retornar Cento e Dois para o numero 102", () => {
+    expect(integerToWords(102)).toEqual("Cento e Dois");
+  });
+
+  test("deve retornar Cento e Três para o numero 103", () => {
+    expect(integerToWords(103)).toEqual("Cento e Três");
+  });
+
+  test("deve retornar Cento e Quatro para o numero 104", () => {
+    expect(integerToWords(104)).toEqual("Cento e Quatro");
+  });
+
+  test("deve retornar Cento e Cinco para o numero 105", () => {
+    expect(integerToWords(105)).toEqual("Cento e Cinco");
+  });
+
+  test("deve retornar Cento e Seis para o numero 106", () => {
+    expect(integerToWords(106)).toEqual("Cento e Seis");
+  });
+
+  test("deve retornar Cento e Sete para o numero 107", () => {
+    expect(integerToWords(107)).toEqual("Cento e Sete");
+  });
+
+  test("deve retornar Cento e Oito para o numero 108", () => {
+    expect(integerToWords(108)).toEqual("Cento e Oito");
+  });
+
+  test("deve retornar Cento e Nove para o numero 109", () => {
+    expect(integerToWords(109)).toEqual("Cento e Nove");
+  });
+
+  test("deve retornar Cento e Onze para o numero 111", () => {
+    expect(integerToWords(111)).toEqual("Cento e Onze");
+  });
+
+  test("deve retornar Cento e Doze para o numero 112", () => {
+    expect(integerToWords(112)).toEqual("Cento e Doze");
+  });
+
+  test("deve retornar Cento e Treze para o numero 113", () => {
+    expect(integerToWords(113)).toEqual("Cento e Treze");
+  });
+
+  test("deve retornar Cento e Quatorze para o numero 114", () => {
+    expect(integerToWords(114)).toEqual("Cento e Quatorze");
+  });
+
+  test("deve retornar Cento e Quinze para o numero 115", () => {
+    expect(integerToWords(115)).toEqual("Cento e Quinze");
+  });
+
+  test("deve retornar Cento e Dezesseis para o numero 116", () => {
+    expect(integerToWords(116)).toEqual("Cento e Dezesseis");
+  });
+
+  test("deve retornar Cento e Dezessete para o numero 117", () => {
+    expect(integerToWords(117)).toEqual("Cento e Dezessete");
+  });
+
+  test("deve retornar Cento e Dezoito para o numero 118", () => {
+    expect(integerToWords(118)).toEqual("Cento e Dezoito");
+  });
+
+  test("deve retornar Cento e Dezenove para o numero 109", () => {
+    expect(integerToWords(119)).toEqual("Cento e Dezenove");
+  });
+});
+
 describe("Conversão de inteiro para extenso", () => {
   it("deve retornar erro para números negativos", () => {
     expect(() => {
