@@ -15,20 +15,9 @@ export function integerToWords(number: number): string {
     "Dezoito",
     "Dezenove",
   ];
-  const tenToNinety = [
-    "Dez",
-    "Vinte",
-    "Trinta",
-    "Quarenta",
-    "Cinquenta",
-    "Sessenta",
-    "Setenta",
-    "Oitenta",
-    "Noventa",
-    "Cem",
-  ];
+  const tenToNinety = ["Dez", "Vinte", "Trinta", "Quarenta", "Cinquenta", "Sessenta", "Setenta", "Oitenta", "Noventa"];
   const oneHundredToNineHundred = [
-    "Cento",
+    divisibleBy(100, number) ? "Cem" : "Cento",
     "Duzentos",
     "Trezentos",
     "Quatrocentos",
@@ -83,6 +72,8 @@ export function integerToWords(number: number): string {
     const [firstNumber, secondNumber] = [+numberParts[0], +(numberParts[1] + numberParts[2])];
     let newMessage = "";
 
+    console.log(firstNumber, secondNumber);
+
     const actions: Action[] = [
       { match: divisibleBy10 && divisibleBy100, execute: () => oneHundredToNineHundred[number / 100 - 1] },
       {
@@ -110,32 +101,4 @@ function divisibleBy(operand: number, number: number): boolean {
   return number % operand === 0;
 }
 
-console.log(integerToWords(101));
-console.log(integerToWords(102));
-console.log(integerToWords(103));
-console.log(integerToWords(104));
-console.log(integerToWords(105));
-console.log(integerToWords(106));
-console.log(integerToWords(107));
-console.log(integerToWords(108));
-console.log(integerToWords(109));
-console.log(integerToWords(110));
-
-console.log(integerToWords(111));
-console.log(integerToWords(123));
-console.log(integerToWords(120));
-console.log(integerToWords(240));
-console.log(integerToWords(666));
-console.log(integerToWords(852));
-console.log(integerToWords(888));
-console.log(integerToWords(999));
-
-console.log(integerToWords(110));
-console.log(integerToWords(120));
-console.log(integerToWords(880));
-console.log(integerToWords(990));
-
 console.log(integerToWords(100));
-console.log(integerToWords(200));
-console.log(integerToWords(800));
-console.log(integerToWords(900));
