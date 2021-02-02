@@ -21,6 +21,7 @@
     "git-commit-msg-linter": "^2.4.4",
     "husky": "^4.2.5",
     "jest": "^26.2.2",
+    "jest-html-reporter": "^3.3.0",
     "lint-staged": "^10.2.11",
     "ts-jest": "^26.1.4",
     "typescript": "^3.9.7"
