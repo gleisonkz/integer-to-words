@@ -327,44 +327,44 @@ describe("números com 3 dígitos", () => {
 });
 
 describe("números com 4 dígitos", () => {
-  test("deve retornar Um Mil Cento e Vinte para o numero 1120", () => {
-    expect(integerToWords(1120)).toEqual("Um Mil Cento e Vinte");
+  test("deve retornar Mil Cento e Vinte para o numero 1120", () => {
+    expect(integerToWords(1120)).toEqual("Mil Cento e Vinte");
   });
 
-  test("deve retornar Um Mil e Um para o numero 1001", () => {
-    expect(integerToWords(1001)).toEqual("Um Mil e Um");
+  test("deve retornar Mil Um para o numero 1001", () => {
+    expect(integerToWords(1001)).toEqual("Mil Um");
   });
 
-  test("deve retornar Um Mil e Dois para o numero 1002", () => {
-    expect(integerToWords(1002)).toEqual("Um Mil e Dois");
+  test("deve retornar Mil Dois para o numero 1002", () => {
+    expect(integerToWords(1002)).toEqual("Mil Dois");
   });
 
-  test("deve retornar Um Mil e Três para o numero 1003", () => {
-    expect(integerToWords(1003)).toEqual("Um Mil e Três");
+  test("deve retornar Mil Três para o numero 1003", () => {
+    expect(integerToWords(1003)).toEqual("Mil Três");
   });
 
-  test("deve retornar Um Mil e Quatro para o numero 1004", () => {
-    expect(integerToWords(1004)).toEqual("Um Mil e Quatro");
+  test("deve retornar Mil Quatro para o numero 1004", () => {
+    expect(integerToWords(1004)).toEqual("Mil Quatro");
   });
 
-  test("deve retornar Um Mil e Nove para o numero 1009", () => {
-    expect(integerToWords(1009)).toEqual("Um Mil e Nove");
+  test("deve retornar Mil Nove para o numero 1009", () => {
+    expect(integerToWords(1009)).toEqual("Mil Nove");
   });
 
-  test("deve retornar Um Mil e Dez para o numero 1010", () => {
-    expect(integerToWords(1010)).toEqual("Um Mil e Dez");
+  test("deve retornar Mil Dez para o numero 1010", () => {
+    expect(integerToWords(1010)).toEqual("Mil Dez");
   });
 
-  test("deve retornar Um Mil e Quinze para o numero 1015", () => {
-    expect(integerToWords(1015)).toEqual("Um Mil e Quinze");
+  test("deve retornar Mil Quinze para o numero 1015", () => {
+    expect(integerToWords(1015)).toEqual("Mil Quinze");
   });
 
-  test("deve retornar Um Mil e Dezenove para o numero 1019", () => {
-    expect(integerToWords(1019)).toEqual("Um Mil e Dezenove");
+  test("deve retornar Mil Dezenove para o numero 1019", () => {
+    expect(integerToWords(1019)).toEqual("Mil Dezenove");
   });
 
-  test("deve retornar Um Mil e Noventa e Nove para o numero 1099", () => {
-    expect(integerToWords(1099)).toEqual("Um Mil e Noventa e Nove");
+  test("deve retornar Mil Noventa e Nove para o numero 1099", () => {
+    expect(integerToWords(1099)).toEqual("Mil Noventa e Nove");
   });
 
   test("deve retornar Nove Mil Novecentos e Noventa e Nove para o numero 9999", () => {
@@ -382,12 +382,12 @@ describe("números com 5 dígitos", () => {
 });
 
 describe("números com 6 dígitos", () => {
-  test("deve retornar Cento e Dez Mil e Cento e Noventa e Cinco para o numero 110195", () => {
-    expect(integerToWords(110195)).toEqual("Cento e Dez Mil e Cento e Noventa e Cinco");
+  test("deve retornar Cento e Dez Mil Cento e Noventa e Cinco para o numero 110195", () => {
+    expect(integerToWords(110195)).toEqual("Cento e Dez Mil Cento e Noventa e Cinco");
   });
 
-  test("deve retornar Quatrocentos e Vinte Mil e Duzentos e Cinquenta e Oito para o numero 420258", () => {
-    expect(integerToWords(420258)).toEqual("Quatrocentos e Vinte Mil e Duzentos e Cinquenta e Oito");
+  test("deve retornar Quatrocentos e Vinte Mil Duzentos e Cinquenta Oito para o numero 420258", () => {
+    expect(integerToWords(420258)).toEqual("Quatrocentos e Vinte Mil Duzentos Cinquenta e Oito");
   });
 });
 
@@ -406,8 +406,8 @@ describe("Conversão de inteiro para extenso", () => {
   //   expect(integerToWords(10120)).toEqual("Dez Mil Cento e Vinte");
   // });
 
-  // test("deve retornar Cento e Um Mil e Duzentos para o numero 101200", () => {
-  //   expect(integerToWords(10120)).toEqual("Cento e Um Mil e Duzentos");
+  // test("deve retornar Cento e Mil Duzentos para o numero 101200", () => {
+  //   expect(integerToWords(10120)).toEqual("Cento e Mil Duzentos");
   // });
 
   // test("deve retornar Um Bilhão Trezentos e Quarenta e Dois Milhões para o numero 1342000000", () => {
