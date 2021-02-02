@@ -58,7 +58,7 @@ export function integerToWords(number: number): string {
   }
 
   function handleTwoDigits(number: number) {
-    const divisibleBy10 = number % 10 === 0;
+    const divisibleBy10 = divisibleBy(10, number);
     const numberParts = [...number.toString()];
     let newMessage = "";
 
@@ -77,7 +77,7 @@ export function integerToWords(number: number): string {
   }
 
   function handleThreeDigits(number: number) {
-    const divisibleBy10 = number % 10 === 0;
+    const divisibleBy10 = divisibleBy(10, number);
     const numberParts = number.toString().split("");
     let newMessage = "";
 
@@ -115,6 +115,10 @@ export function integerToWords(number: number): string {
   }
 
   return message;
+}
+
+function divisibleBy(operand: number, number: number): boolean {
+  return number % operand === 0;
 }
 
 console.log(integerToWords(101));
