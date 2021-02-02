@@ -374,6 +374,10 @@ describe("Conversão de inteiro para extenso", () => {
       expect(integerToWords(1099)).toEqual("Mil e Noventa e Nove");
     });
 
+    test("deve retornar Cinco Mil Duzentos para o numero 5200", () => {
+      expect(integerToWords(5200)).toEqual("Cinco Mil Duzentos");
+    });
+
     test("deve retornar Nove Mil Novecentos e Noventa e Nove para o numero 9999", () => {
       expect(integerToWords(9999)).toEqual("Nove Mil Novecentos e Noventa e Nove");
     });
@@ -403,6 +407,10 @@ describe("Conversão de inteiro para extenso", () => {
 
     test("deve retornar Seiscentos e Cinquenta Mil e Um para o numero 650001", () => {
       expect(integerToWords(650001)).toEqual("Seiscentos e Cinquenta Mil e Um");
+    });
+
+    test("deve retornar Seiscentos e Oitenta e Cinco Mil Duzentos 685200", () => {
+      expect(integerToWords(685200)).toEqual("Seiscentos e Oitenta e Cinco Mil Duzentos");
     });
 
     test("deve retornar Quatrocentos e Vinte Mil Duzentos e Cinquenta Oito para o numero 420258", () => {
