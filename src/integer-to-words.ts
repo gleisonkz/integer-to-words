@@ -45,39 +45,9 @@ export function integerToWords(number: number): string {
   if (number <= 9) {
     message = handleLessThan10(number);
   } else if (numberParts.length === 2) {
-    handleTwoDigits(number);
+    message = handleTwoDigits(number);
   } else if (numberParts.length === 3) {
-    const noReminderBy10 = number % 10 === 0;
-
-    if (!noReminderBy10) {
-      console.log(number);
-    }
-
-    if (noReminderBy10) {
-      const noReminderBy100 = number % 100 === 0;
-
-      if (noReminderBy100) {
-        message = oneHundredToNineHundred[number / 100 - 1];
-      } else {
-        const newArr = [+numberParts[0], +(numberParts[1] + numberParts[2])];
-        message = `${oneHundredToNineHundred[newArr[0] - 1]} e ${tenToNinety[newArr[1] / 10 - 1]}`;
-      }
-
-      // const newArr = [numberParts[0], numberParts[1] + numberParts[2]];
-      // console.log(newArr);
-      // message = `${oneHundredToNineHundred[newArr[0] - 1]} e ${tenToNinety[newArr[1] / 10 - 1]}`;
-      // console.log(number);
-    }
-    if (!noReminderBy10) {
-      console.log(number);
-      const newArr = [+numberParts[0], +(numberParts[1] + numberParts[2])];
-      const [firstNumber, secondNumber] = newArr;
-      console.log(newArr);
-      message = `${oneHundredToNineHundred[firstNumber - 1]} e ${
-        secondNumber < 10 ? handleLessThan10(secondNumber) : handleTwoDigits(secondNumber)
-      }`;
-      console.log(number);
-    }
+    message = handleThreeDigits(number);
   }
 
   function handleLessThan10(number: number) {
@@ -100,6 +70,36 @@ export function integerToWords(number: number): string {
       newMessage = `${tenToNinety[+numberParts[0] - 1]} e ${decimals[+numberParts[1]]}`;
     }
 
+    return newMessage;
+  }
+
+  function handleThreeDigits(number: number) {
+    const noReminderBy10 = number % 10 === 0;
+    const numberParts = number.toString().split("");
+    let newMessage = "";
+
+    if (!noReminderBy10) {
+      console.log(number);
+    }
+
+    if (noReminderBy10) {
+      const noReminderBy100 = number % 100 === 0;
+
+      if (noReminderBy100) {
+        newMessage = oneHundredToNineHundred[number / 100 - 1];
+      } else {
+        const newArr = [+numberParts[0], +(numberParts[1] + numberParts[2])];
+        newMessage = `${oneHundredToNineHundred[newArr[0] - 1]} e ${tenToNinety[newArr[1] / 10 - 1]}`;
+      }
+    }
+    if (!noReminderBy10) {
+      const newArr = [+numberParts[0], +(numberParts[1] + numberParts[2])];
+      const [firstNumber, secondNumber] = newArr;
+
+      newMessage = `${oneHundredToNineHundred[firstNumber - 1]} e ${
+        secondNumber < 10 ? handleLessThan10(secondNumber) : handleTwoDigits(secondNumber)
+      }`;
+    }
     return newMessage;
   }
 
@@ -159,24 +159,3 @@ console.log(integerToWords(76));
 console.log(integerToWords(87));
 console.log(integerToWords(98));
 console.log(integerToWords(99));
-
-console.log(integerToWords(11));
-console.log(integerToWords(12));
-console.log(integerToWords(13));
-console.log(integerToWords(14));
-console.log(integerToWords(15));
-console.log(integerToWords(16));
-console.log(integerToWords(17));
-console.log(integerToWords(18));
-console.log(integerToWords(19));
-
-console.log(integerToWords(0));
-console.log(integerToWords(1));
-console.log(integerToWords(2));
-console.log(integerToWords(3));
-console.log(integerToWords(4));
-console.log(integerToWords(5));
-console.log(integerToWords(6));
-console.log(integerToWords(7));
-console.log(integerToWords(8));
-console.log(integerToWords(9));
