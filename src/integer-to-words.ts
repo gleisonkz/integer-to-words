@@ -51,7 +51,7 @@ export function integerToWords(number: number): string {
     { match: numberParts.length === 2, execute: () => handleTwoDigits(number) },
     { match: numberParts.length === 3, execute: () => handleThreeDigits(number) },
     { match: numberParts.length.isBetween(4, 6), execute: () => handleThousand(number) },
-    // { match: numberParts.length === 7, execute: () => handleMillion(number) },
+    // { match: numberParts.length.isBetween(7, 9), execute: () => handleMillion(number) },
   ];
 
   const action = actions.find((action) => action.match);
@@ -128,8 +128,6 @@ export function integerToWords(number: number): string {
     ];
 
     const lastNumber = +lastThreeParts.map(Number).join("");
-    console.log(lastNumber);
-
     const lastNumberParts = lastNumber.toArray(String);
 
     const actionsLastPart: Action[] = [
@@ -155,14 +153,55 @@ export function integerToWords(number: number): string {
     const actionLastPart = actionsLastPart.find((action) => action.match);
     const firstPartMessage = actionFirstPart.execute();
     const LastPartMessage = actionLastPart.execute();
-    return `${firstPartMessage}Mil ${LastPartMessage}`.trim();
+    const newMessage = `${firstPartMessage}Mil ${LastPartMessage}`.trim();
+
+    return newMessage;
   }
 
-  // function handleMillion(number: number): string {}
+  // function handleMillion(number: number): string {
+  //   const numberParts = number.toArray(String) as string[];
+  //   const lastThreeParts = numberParts.slice(Math.max(numberParts.length - 6, 1));
+  //   const firstTwoParts = numberParts.slice(0, numberParts.length - 6);
+  //   const firstNumber = +numberParts.slice(0, numberParts.length - 6).join("");
+  //   const lastNumber = +lastThreeParts.map(Number).join("");
+
+  //   console.log(firstNumber);
+  //   console.log(lastNumber);
+
+  //   const actionsFirstPart: Action[] = [
+  //     {
+  //       match: firstTwoParts.length === 1 && firstNumber === 1,
+  //       execute: () => `${handleLessThan10(firstNumber)} Milhão`,
+  //     },
+  //     {
+  //       match: firstTwoParts.length === 1 && firstNumber !== 1,
+  //       execute: () => `${handleLessThan10(firstNumber)} Milhões`,
+  //     },
+  //     {
+  //       match: firstTwoParts.length === 2,
+  //       execute: () => `${handleTwoDigits(firstNumber)} Milhões`,
+  //     },
+  //     {
+  //       match: firstTwoParts.length === 3,
+  //       execute: () => `${handleThreeDigits(firstNumber)} Milhões`,
+  //     },
+  //     {
+  //       match: true,
+  //       execute: () => "",
+  //     },
+  //   ];
+
+  //   const actionFirstPart = actionsFirstPart.find((action) => action.match);
+  //   const firstPartMessage = actionFirstPart.execute();
+  //   return `${firstPartMessage} ${handleThousand(lastNumber)}`.trim();
+  // }
 
   return message;
 }
 
-console.log(integerToWords(342000));
-console.log(integerToWords(245998));
-console.log(integerToWords(1019));
+// console.log(integerToWords(685200));
+console.log(integerToWords(5200));
+
+// console.log(integerToWords(1458985));
+// console.log(integerToWords(20685200));
+// console.log(integerToWords(120666999));
