@@ -1,6 +1,6 @@
 import { integerToWords } from "./integer-to-words";
 
-describe("números do 1 ao 19", () => {
+describe("números do 1 ao 9 e 11 a 19", () => {
   test("deve retornar Zero para o numero 0", () => {
     expect(integerToWords(0)).toEqual("Zero");
   });
@@ -78,6 +78,82 @@ describe("números do 1 ao 19", () => {
   });
 });
 
+describe("números com 2 dígitos", () => {
+  test("deve retornar Dez para o numero 10", () => {
+    expect(integerToWords(10)).toEqual("Dez");
+  });
+
+  test("deve retornar Vinte para o numero 20", () => {
+    expect(integerToWords(20)).toEqual("Vinte");
+  });
+
+  test("deve retornar Trinta para o numero 30", () => {
+    expect(integerToWords(30)).toEqual("Trinta");
+  });
+
+  test("deve retornar Quarenta para o numero 40", () => {
+    expect(integerToWords(40)).toEqual("Quarenta");
+  });
+
+  test("deve retornar Cinquenta para o numero 50", () => {
+    expect(integerToWords(50)).toEqual("Cinquenta");
+  });
+
+  test("deve retornar Sessenta para o numero 60", () => {
+    expect(integerToWords(60)).toEqual("Sessenta");
+  });
+
+  test("deve retornar Setenta para o numero 70", () => {
+    expect(integerToWords(70)).toEqual("Setenta");
+  });
+
+  test("deve retornar Oitenta para o numero 80", () => {
+    expect(integerToWords(80)).toEqual("Oitenta");
+  });
+
+  test("deve retornar Noventa para o numero 90", () => {
+    expect(integerToWords(90)).toEqual("Noventa");
+  });
+});
+
+describe("mais números com 2 dígitos", () => {
+  test("deve retornar Dezenove para o numero 19", () => {
+    expect(integerToWords(19)).toEqual("Dezenove");
+  });
+
+  test("deve retornar Vinte e Oito para o numero 28", () => {
+    expect(integerToWords(28)).toEqual("Vinte e Oito");
+  });
+
+  test("deve retornar Trinta e Sete para o numero 37", () => {
+    expect(integerToWords(37)).toEqual("Trinta e Sete");
+  });
+
+  test("deve retornar Quarenta e Seis para o numero 46", () => {
+    expect(integerToWords(46)).toEqual("Quarenta e Seis");
+  });
+
+  test("deve retornar Cinquenta e Cinco para o numero 55", () => {
+    expect(integerToWords(55)).toEqual("Cinquenta e Cinco");
+  });
+
+  test("deve retornar Sessenta e Quatro para o numero 64", () => {
+    expect(integerToWords(64)).toEqual("Sessenta e Quatro");
+  });
+
+  test("deve retornar Setenta e Três para o numero 73", () => {
+    expect(integerToWords(73)).toEqual("Setenta e Três");
+  });
+
+  test("deve retornar Oitenta e Dois para o numero 82", () => {
+    expect(integerToWords(82)).toEqual("Oitenta e Dois");
+  });
+
+  test("deve retornar Noventa e Um para o numero 91", () => {
+    expect(integerToWords(91)).toEqual("Noventa e Um");
+  });
+});
+
 describe("Conversão de inteiro para extenso", () => {
   it("deve retornar erro para números negativos", () => {
     expect(() => {
@@ -89,19 +165,19 @@ describe("Conversão de inteiro para extenso", () => {
     expect(integerToWords(120)).toEqual("Cento e Vinte");
   });
 
-  test("deve retornar Mil Cento e Vinte para o numero 1120", () => {
-    expect(integerToWords(1120)).toEqual("Mil Cento e Vinte");
-  });
+  // test("deve retornar Mil Cento e Vinte para o numero 1120", () => {
+  //   expect(integerToWords(1120)).toEqual("Mil Cento e Vinte");
+  // });
 
-  test("deve retornar Dez Mil Cento e Vinte para o numero 10120", () => {
-    expect(integerToWords(10120)).toEqual("Dez Mil Cento e Vinte");
-  });
+  // test("deve retornar Dez Mil Cento e Vinte para o numero 10120", () => {
+  //   expect(integerToWords(10120)).toEqual("Dez Mil Cento e Vinte");
+  // });
 
-  test("deve retornar Cento e Um Mil e Duzentos para o numero 101200", () => {
-    expect(integerToWords(10120)).toEqual("Cento e Um Mil e Duzentos");
-  });
+  // test("deve retornar Cento e Um Mil e Duzentos para o numero 101200", () => {
+  //   expect(integerToWords(10120)).toEqual("Cento e Um Mil e Duzentos");
+  // });
 
-  test("deve retornar Um Bilhão Trezentos e Quarenta e Dois Milhões para o numero 1342000000", () => {
-    expect(integerToWords(1342000000)).toEqual("Um Bilhão Trezentos e Quarenta e Dois Milhões");
-  });
+  // test("deve retornar Um Bilhão Trezentos e Quarenta e Dois Milhões para o numero 1342000000", () => {
+  //   expect(integerToWords(1342000000)).toEqual("Um Bilhão Trezentos e Quarenta e Dois Milhões");
+  // });
 });
