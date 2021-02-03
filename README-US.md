@@ -6,7 +6,7 @@
 </div>
 
 <p align="center">
-  <img alt="Comics ++" src=".github/logo.png" width="250px"/>
+  <img alt="Algorithms Logo" src=".github/logo.png" width="250px"/>
 </p>
 
 <p align="center"> 
@@ -34,8 +34,6 @@
 
 <div align="center">
 
-To see the deployment [Click Here](https://kz-kanban-board.netlify.app/)
-
 | Preview
 | :------------------------------------------------------------------------------------:
 | <kbd><img src=".github/preview.gif" alt="Desktop"/></kbd>
@@ -48,7 +46,7 @@ To see the deployment [Click Here](https://kz-kanban-board.netlify.app/)
 
 <div align="center">
 
-Application built to practice some concepts about Drag and drop with Angular 11.
+Algorithm to convert positive integers to words..
 
 ---
 
@@ -65,13 +63,13 @@ Open the command prompt in the project directory, and execute the following comm
 <details>
   <summary><i>com <b>npm</b></i></summary>
   
-  ```bash
-  # Install dependencies
-  $ npm install ou npm i
+```bash
+# Install dependencies
+$ npm install ou npm i
 
-# Start development server
+# Run tests
 
-$ ng serve --open ou ng s -o
+$ npm test
 
 ````
 
@@ -82,16 +80,16 @@ $ ng serve --open ou ng s -o
 
 ```bash
 # Install dependencies
-$ yarn
+$ yarn install
 
-# Start development server
-$ ng serve --open ou ng s -o
+# Run tests
+$ yarn test
 
 ````
 
 </details>
 
-> ⚠️ The development server will start on port: 4200 - Access <http://localhost:4200>
+> ⚠️ It Will be generated a HTML file (test-reporter.html) that you can open in the browser.
 
 </div>
 
@@ -101,13 +99,15 @@ $ ng serve --open ou ng s -o
 
 <div align="center">
 
-|           :globe_with_meridians: FrontEnd           |
-| :-------------------------------------------------: |
-|          [Angular 11](https://angular.io/)          |
-| [Angular Material 11](https://material.angular.io/) |
-|           [SASS](https://sass-lang.com/)            |
-| [TypeScript 4.0.2](https://www.typescriptlang.org/) |
-|    [Rxjs 6.6.0](https://rxjs.dev/guide/overview)    |
+|                                      👨‍💻                                      |
+| :--------------------------------------------------------------------------: |
+|             [TypeScript 3.9.7](https://www.typescriptlang.org/)              |
+|              [Jest](https://jestjs.io/docs/en/getting-started)               |
+|               [Ts-Jest](https://www.npmjs.com/package/ts-jest)               |
+|    [Jest-html-reporter](https://www.npmjs.com/package/jest-html-reporter)    |
+|                        [Node](https://nodejs.org/en/)                        |
+|                 [Husky](https://www.npmjs.com/package/husky)                 |
+| [Git-Commit-Msg-Linter](https://www.npmjs.com/package/git-commit-msg-linter) |
 
 </div>
 
@@ -117,11 +117,9 @@ $ ng serve --open ou ng s -o
 
 <div align="center">
 
-|                                                       |
-| :---------------------------------------------------: |
-|     Drag and Drop tasks from one list to another      |
-|                 Delete and edit tasks                 |
-| Save to Local storage and retrieve from Local Storage |
+|             :page_facing_up:              |
+| :---------------------------------------: |
+| Conversion from positive integer to words |
 
 </div>
 

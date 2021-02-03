@@ -46,7 +46,7 @@
 
 <div align="center">
 
-Aplicação feita para praticar alguns conceitos de Drag and Drop utilizando o Angular 11.
+Algoritmo para conversão de números positivos inteiros para extenso.
 
 ---
 
@@ -63,13 +63,13 @@ Abra o prompt de comando no diretório do projeto, e execute os seguintes códig
 <details>
   <summary><i>com <b>npm</b></i></summary>
   
-  ```bash
-  # Instalar dependências
-  $ npm install ou npm i
+```bash
+# Instalar dependências
+$ npm install ou npm i
 
-# Iniciar o servidor de desenvolvimento
+# Executar os testes com Jest
 
-$ ng serve --open ou ng s -o
+$ npm test
 
 ````
 
@@ -82,14 +82,14 @@ $ ng serve --open ou ng s -o
 # Instalar dependências
 $ yarn install
 
-# Iniciar o servidor de desenvolvimento
-$ ng serve --open ou ng s -o
+# Executar os testes com Jest
+$ npm test
 
 ````
 
 </details>
 
-> ⚠️ O servidor de desenvolvimento será iniciado na porta: 4200 - Acesse <http://localhost:4200>
+> ⚠️ Será gerado arquivo HTML (test-report.html) com o resultado dos testes que pode ser aberto no navegador.
 
 </div>
 
@@ -99,13 +99,15 @@ $ ng serve --open ou ng s -o
 
 <div align="center">
 
-|           :globe_with_meridians: FrontEnd           |
-| :-------------------------------------------------: |
-|          [Angular 11](https://angular.io/)          |
-| [Angular Material 11](https://material.angular.io/) |
-|           [SASS](https://sass-lang.com/)            |
-| [TypeScript 4.0.2](https://www.typescriptlang.org/) |
-|    [Rxjs 6.6.0](https://rxjs.dev/guide/overview)    |
+|                                      👨‍💻                                      |
+| :--------------------------------------------------------------------------: |
+|             [TypeScript 3.9.7](https://www.typescriptlang.org/)              |
+|              [Jest](https://jestjs.io/docs/en/getting-started)               |
+|               [Ts-Jest](https://www.npmjs.com/package/ts-jest)               |
+|    [Jest-html-reporter](https://www.npmjs.com/package/jest-html-reporter)    |
+|                        [Node](https://nodejs.org/en/)                        |
+|                 [Husky](https://www.npmjs.com/package/husky)                 |
+| [Git-Commit-Msg-Linter](https://www.npmjs.com/package/git-commit-msg-linter) |
 
 </div>
 
@@ -117,9 +119,7 @@ $ ng serve --open ou ng s -o
 
 |              :page_facing_up:              |
 | :----------------------------------------: |
-| Drag and Drop das tarefas entre os quadros |
-|          Deletar e Editar tarefas          |
-|       Dados salvos no local storage        |
+| Conversão de números inteiros para extenso |
 
 </div>
 
