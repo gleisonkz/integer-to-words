@@ -17,7 +17,9 @@ export function integerToWords(number: number): string {
     "Dezoito",
     "Dezenove",
   ];
+
   const tenToNinety = ["Dez", "Vinte", "Trinta", "Quarenta", "Cinquenta", "Sessenta", "Setenta", "Oitenta", "Noventa"];
+
   const oneHundredToNineHundred = [
     (number: number) => (number.divisibleBy(100) ? "Cem" : "Cento"),
     () => "Duzentos",
@@ -31,7 +33,6 @@ export function integerToWords(number: number): string {
   ];
 
   const numberParts = number.toArray(String);
-  let message = "";
 
   const actions: Action[] = [
     { match: number <= 9, execute: () => handleLessThan10(number) },
@@ -43,7 +44,7 @@ export function integerToWords(number: number): string {
   ];
 
   const action = actions.find((action) => action.match);
-  message = action.execute();
+  const message = action.execute();
 
   function handleLessThan10(number: number): string {
     return zeroToNine[number];
