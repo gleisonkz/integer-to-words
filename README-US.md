@@ -10,6 +10,7 @@
 </p>
 
 <p align="center"> 
+  <img alt="Top Language" src="https://img.shields.io/github/languages/top/gleisonkz/integer-to-words?color=3498db&style=for-the-badge">
   <img alt="Repository Size" src="https://img.shields.io/github/repo-size/gleisonkz/integer-to-words?color=3498db&style=for-the-badge">
   <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/gleisonkz/integer-to-words?color=3498db&style=for-the-badge">   
   <a href="https://github.com/gleisonkz">
