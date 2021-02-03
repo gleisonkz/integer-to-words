@@ -1,18 +1,5 @@
 import { Action } from "./models/action.model";
-// import "./models/extensions";
-
-Number.prototype.isBetween = function (min: number, max: number) {
-  return this >= min && this <= max;
-};
-
-Number.prototype.toArray = function (type: StringConstructor | NumberConstructor) {
-  const stringArray: string[] = [...this.toString()];
-  return stringArray.map((c) => type(c));
-};
-
-Number.prototype.divisibleBy = function (operand: number) {
-  return this % operand === 0;
-};
+import "./models/extensions";
 
 export function integerToWords(number: number): string {
   if (number < 0) throw RangeError("Number out of range for conversion.");
@@ -32,15 +19,15 @@ export function integerToWords(number: number): string {
   ];
   const tenToNinety = ["Dez", "Vinte", "Trinta", "Quarenta", "Cinquenta", "Sessenta", "Setenta", "Oitenta", "Noventa"];
   const oneHundredToNineHundred = [
-    number.divisibleBy(100) ? "Cem" : "Cento",
-    "Duzentos",
-    "Trezentos",
-    "Quatrocentos",
-    "Quinhentos",
-    "Seiscentos",
-    "Setecentos",
-    "Oitocentos",
-    "Novecentos",
+    (number: number) => (number.divisibleBy(100) ? "Cem" : "Cento"),
+    () => "Duzentos",
+    () => "Trezentos",
+    () => "Quatrocentos",
+    () => "Quinhentos",
+    () => "Seiscentos",
+    () => "Setecentos",
+    () => "Oitocentos",
+    () => "Novecentos",
   ];
 
   const numberParts = number.toArray(String);
@@ -52,6 +39,7 @@ export function integerToWords(number: number): string {
     { match: numberParts.length === 3, execute: () => handleThreeDigits(number) },
     { match: numberParts.length.isBetween(4, 6), execute: () => handleThousand(number) },
     { match: numberParts.length.isBetween(7, 9), execute: () => handleMillion(number) },
+    { match: numberParts.length.isBetween(10, 12), execute: () => handleBillion(number) },
   ];
 
   const action = actions.find((action) => action.match);
@@ -86,15 +74,15 @@ export function integerToWords(number: number): string {
     const [firstNumber, secondNumber] = [+numberParts[0], +(numberParts[1] + numberParts[2])];
 
     const actions: Action[] = [
-      { match: divisibleBy10 && divisibleBy100, execute: () => oneHundredToNineHundred[number / 100 - 1] },
+      { match: divisibleBy10 && divisibleBy100, execute: () => oneHundredToNineHundred[number / 100 - 1](number) },
       {
         match: divisibleBy10,
-        execute: () => `${oneHundredToNineHundred[firstNumber - 1]} e ${tenToNinety[secondNumber / 10 - 1]}`,
+        execute: () => `${oneHundredToNineHundred[firstNumber - 1](number)} e ${tenToNinety[secondNumber / 10 - 1]}`,
       },
       {
         match: !divisibleBy10,
         execute: () =>
-          `${oneHundredToNineHundred[firstNumber - 1]} e ${
+          `${oneHundredToNineHundred[firstNumber - 1](number)} e ${
             secondNumber < 10 ? handleLessThan10(secondNumber) : handleTwoDigits(secondNumber)
           }`,
       },
@@ -193,11 +181,40 @@ export function integerToWords(number: number): string {
     return `${firstPartMessage} ${handleThousand(lastNumber)}`.trim();
   }
 
+  function handleBillion(number: number): string {
+    const numberParts = number.toArray(String) as string[];
+    const lastThreeParts = numberParts.slice(Math.max(numberParts.length - 9, 1));
+    const firstTwoParts = numberParts.slice(0, numberParts.length - 9);
+    const firstNumber = +numberParts.slice(0, numberParts.length - 9).join("");
+    const lastNumber = +lastThreeParts.map(Number).join("");
+
+    const actionsFirstPart: Action[] = [
+      {
+        match: firstTwoParts.length === 1 && firstNumber === 1,
+        execute: () => `${handleLessThan10(firstNumber)} Bilhão`,
+      },
+      {
+        match: firstTwoParts.length === 1 && firstNumber !== 1,
+        execute: () => `${handleLessThan10(firstNumber)} Bilhões`,
+      },
+      {
+        match: firstTwoParts.length === 2,
+        execute: () => `${handleTwoDigits(firstNumber)} Bilhões`,
+      },
+      {
+        match: firstTwoParts.length === 3,
+        execute: () => `${handleThreeDigits(firstNumber)} Bilhões`,
+      },
+      {
+        match: true,
+        execute: () => "",
+      },
+    ];
+
+    const actionFirstPart = actionsFirstPart.find((action) => action.match);
+    const firstPartMessage = actionFirstPart.execute();
+    return `${firstPartMessage} ${handleMillion(lastNumber)}`.trim();
+  }
+
   return message;
 }
-
-console.log(integerToWords(685200));
-
-console.log(integerToWords(1458985));
-console.log(integerToWords(20685200));
-console.log(integerToWords(120666999));
