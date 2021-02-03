@@ -386,6 +386,7 @@ describe("Conversão de inteiro para extenso", () => {
       expect(integerToWords(9999)).toEqual("Nove Mil Novecentos e Noventa e Nove");
     });
   });
+
   describe("números com 5 dígitos", () => {
     test("deve retornar Dez Mil e Dez para o numero 10010", () => {
       expect(integerToWords(10010)).toEqual("Dez Mil e Dez");
