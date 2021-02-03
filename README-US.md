@@ -9,14 +9,17 @@
   <img alt="Algorithms Logo" src=".github/logo.png" width="250px"/>
 </p>
 
-<p align="center"> 
-  <img alt="Repository Size" src="https://img.shields.io/github/repo-size/gleisonkz/integer-to-words?color=3498db&style=for-the-badge">
-  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/gleisonkz/integer-to-words?color=3498db&style=for-the-badge">   
-  <a href="https://github.com/gleisonkz">
-    <img alt="Developed by Gleison" src="https://img.shields.io/badge/Developer-Gleison-%3498db?color=3498db&style=for-the-badge">
-  </a>  
-  <img alt="Project License" src="https://img.shields.io/apm/l/vim-mode?style=for-the-badge"/>
+<p align="center">
+
+![Repo Size][repo-size] ![Last Commit][last-commit] ![Developer][developer] ![Top Language][top-language] ![License][license]
+
 </p>
+
+[repo-size]: https://img.shields.io/github/repo-size/gleisonkz/integer-to-words?color=3498db&style=for-the-badge
+[last-commit]: https://img.shields.io/github/last-commit/gleisonkz/integer-to-words?color=3498db&style=for-the-badge
+[developer]: https://img.shields.io/badge/Developer-Gleison-%3498db?color=3498db&style=for-the-badge
+[license]: https://img.shields.io/apm/l/vim-mode?style=for-the-badge
+[top-language]: https://img.shields.io/github/languages/top/gleisonkz/integer-to-words?color=3498db&style=for-the-badge
 
 <p align="center">
  <a href="#eye_speech_bubble-preview">Preview</a> •
