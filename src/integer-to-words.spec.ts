@@ -244,6 +244,10 @@ describe("Conversão de inteiro para extenso", () => {
       expect(integerToWords(110)).toEqual("Cento e Dez");
     });
 
+    test("deve retornar Cento e Vinte para o numero 120", () => {
+      expect(integerToWords(120)).toEqual("Cento e Vinte");
+    });
+
     test("deve retornar Cento e Vinte e Três para o numero 123", () => {
       expect(integerToWords(123)).toEqual("Cento e Vinte e Três");
     });
@@ -419,7 +423,7 @@ describe("Conversão de inteiro para extenso", () => {
   });
 
   describe("números com 7 8 e 9 dígitos - Milhão", () => {
-    test("deve retornar Um Milhão Quatrocentos e Cinqüenta e Oito Mil Novecentos e Oitenta e Cinco para o numero 1458985", () => {
+    test("deve retornar Um Milhão Quatrocentos e Cinquenta e Oito Mil Novecentos e Oitenta e Cinco para o numero 1458985", () => {
       expect(integerToWords(1458985)).toEqual(
         "Um Milhão Quatrocentos e Cinquenta e Oito Mil Novecentos e Oitenta e Cinco"
       );
@@ -432,6 +436,24 @@ describe("Conversão de inteiro para extenso", () => {
     test("deve retornar Cento e Vinte Milhões Seiscentos e Sessenta e Seis Mil Novecentos e Noventa e Nove para o numero 120666999", () => {
       expect(integerToWords(120666999)).toEqual(
         "Cento e Vinte Milhões Seiscentos e Sessenta e Seis Mil Novecentos e Noventa e Nove"
+      );
+    });
+  });
+
+  describe("números com 10 11 e 12 dígitos - Bilhão", () => {
+    test("deve retornar Um Bilhão Quatrocentos e Cinquenta e Oito Milhões Novecentos e Oitenta e Cinco Mil para o numero 1458985000", () => {
+      expect(integerToWords(1458985000)).toEqual(
+        "Um Bilhão Quatrocentos e Cinquenta e Oito Milhões Novecentos e Oitenta e Cinco Mil"
+      );
+    });
+
+    test("deve retornar Vinte Bilhões Seiscentos e Oitenta e Cinco Milhões Duzentos Mil Duzentos para o numero 20685200000", () => {
+      expect(integerToWords(20685200000)).toEqual("Vinte Bilhões Seiscentos e Oitenta e Cinco Milhões Duzentos Mil");
+    });
+
+    test("deve retornar Cento e Vinte Bilhões Seiscentos e Sessenta e Seis Milhões Novecentos e Noventa e Nove Mil para o numero 120666999000", () => {
+      expect(integerToWords(120666999000)).toEqual(
+        "Cento e Vinte Bilhões Seiscentos e Sessenta e Seis Milhões Novecentos e Noventa e Nove Mil"
       );
     });
   });
