@@ -61,11 +61,11 @@ To run this project you need to clone this repository, have the NOde Package Man
 Open the command prompt in the project directory, and execute the following commands:
 
 <details>
-  <summary><i>com <b>npm</b></i></summary>
+  <summary><i>with <b>npm</b></i></summary>
   
 ```bash
 # Install dependencies
-$ npm install ou npm i
+$ npm install or npm i
 
 # Run tests
 
@@ -76,7 +76,7 @@ $ npm test
 </details>
 
 <details>
-<summary><i>com <b>yarn</b></i></summary>
+<summary><i>with <b>yarn</b></i></summary>
 
 ```bash
 # Install dependencies
