@@ -4,23 +4,22 @@ import "./models/extensions";
 export function integerToWords(number: number): string {
   if (number < 0) throw RangeError("Number out of range for conversion.");
 
-  const zeroToNine = ["Zero", "Um", "Dois", "Três", "Quatro", "Cinco", "Seis", "Sete", "Oito", "Nove"];
+  const onesPlace = ["Zero", "Um", "Dois", "Três", "Quatro", "Cinco", "Seis", "Sete", "Oito", "Nove"];
+  const tensPlace = ["Onze", "Doze", "Treze", "Quatorze", "Quinze", "Dezesseis", "Dezessete", "Dezoito", "Dezenove"];
 
-  const elevenToNineTeen = [
-    "Onze",
-    "Doze",
-    "Treze",
-    "Quatorze",
-    "Quinze",
-    "Dezesseis",
-    "Dezessete",
-    "Dezoito",
-    "Dezenove",
+  const exactTensPlace = [
+    "Dez",
+    "Vinte",
+    "Trinta",
+    "Quarenta",
+    "Cinquenta",
+    "Sessenta",
+    "Setenta",
+    "Oitenta",
+    "Noventa",
   ];
 
-  const tenToNinety = ["Dez", "Vinte", "Trinta", "Quarenta", "Cinquenta", "Sessenta", "Setenta", "Oitenta", "Noventa"];
-
-  const oneHundredToNineHundred = [
+  const hundredsPlace = [
     (number: number) => (number.divisibleBy(100) ? "Cem" : "Cento"),
     () => "Duzentos",
     () => "Trezentos",
@@ -35,32 +34,32 @@ export function integerToWords(number: number): string {
   const numberParts = number.toArray(String);
 
   const actions: Action[] = [
-    { match: number <= 9, execute: () => handleLessThan10(number) },
-    { match: numberParts.length === 2, execute: () => handleTwoDigits(number) },
-    { match: numberParts.length === 3, execute: () => handleThreeDigits(number) },
-    { match: numberParts.length.isBetween(4, 6), execute: () => handleThousand(number) },
-    { match: numberParts.length.isBetween(7, 9), execute: () => handleMillion(number) },
-    { match: numberParts.length.isBetween(10, 12), execute: () => handleBillion(number) },
+    { match: number <= 9, execute: () => handleOnes(number) },
+    { match: numberParts.length === 2, execute: () => handleTens(number) },
+    { match: numberParts.length === 3, execute: () => handleHundreds(number) },
+    { match: numberParts.length.isBetween(4, 6), execute: () => handleThousands(number) },
+    { match: numberParts.length.isBetween(7, 9), execute: () => handleMillions(number) },
+    { match: numberParts.length.isBetween(10, 12), execute: () => handleBillions(number) },
   ];
 
   const action = actions.find((action) => action.match);
   const message = action.execute();
 
-  function handleLessThan10(number: number): string {
-    return zeroToNine[number];
+  function handleOnes(number: number): string {
+    return onesPlace[number];
   }
 
-  function handleTwoDigits(number: number): string {
+  function handleTens(number: number): string {
     const divisibleBy10 = number.divisibleBy(10);
     const numberParts = number.toArray(String);
 
     const actions: Action[] = [
-      { match: !divisibleBy10 && number <= 19, execute: () => elevenToNineTeen[+numberParts[1] - 1] },
+      { match: !divisibleBy10 && number <= 19, execute: () => tensPlace[+numberParts[1] - 1] },
       {
         match: !divisibleBy10 && number > 19,
-        execute: () => `${tenToNinety[+numberParts[0] - 1]} e ${zeroToNine[+numberParts[1]]}`,
+        execute: () => `${exactTensPlace[+numberParts[0] - 1]} e ${onesPlace[+numberParts[1]]}`,
       },
-      { match: true, execute: () => tenToNinety[number / 10 - 1] },
+      { match: true, execute: () => exactTensPlace[number / 10 - 1] },
     ];
 
     const action = actions.find((action) => action.match);
@@ -68,23 +67,23 @@ export function integerToWords(number: number): string {
     return newMessage;
   }
 
-  function handleThreeDigits(number: number): string {
+  function handleHundreds(number: number): string {
     const divisibleBy10 = number.divisibleBy(10);
     const divisibleBy100 = number.divisibleBy(100);
     const numberParts = number.toArray(String) as string[];
     const [firstNumber, secondNumber] = [+numberParts.first(1), +numberParts.last(2).join("")];
 
     const actions: Action[] = [
-      { match: divisibleBy10 && divisibleBy100, execute: () => oneHundredToNineHundred[number / 100 - 1](number) },
+      { match: divisibleBy10 && divisibleBy100, execute: () => hundredsPlace[number / 100 - 1](number) },
       {
         match: divisibleBy10,
-        execute: () => `${oneHundredToNineHundred[firstNumber - 1](number)} e ${tenToNinety[secondNumber / 10 - 1]}`,
+        execute: () => `${hundredsPlace[firstNumber - 1](number)} e ${exactTensPlace[secondNumber / 10 - 1]}`,
       },
       {
         match: !divisibleBy10,
         execute: () =>
-          `${oneHundredToNineHundred[firstNumber - 1](number)} e ${
-            secondNumber < 10 ? handleLessThan10(secondNumber) : handleTwoDigits(secondNumber)
+          `${hundredsPlace[firstNumber - 1](number)} e ${
+            secondNumber < 10 ? handleOnes(secondNumber) : handleTens(secondNumber)
           }`,
       },
     ];
@@ -94,7 +93,7 @@ export function integerToWords(number: number): string {
     return newMessage;
   }
 
-  function handleThousand(number: number): string {
+  function handleThousands(number: number): string {
     const numberParts = number.toArray(String) as string[];
     const factor = 3;
 
@@ -103,14 +102,14 @@ export function integerToWords(number: number): string {
     const firstNumber = +thousandsArray.join("");
 
     const actionsFirstPart: Action[] = [
-      { match: thousandsArray.length === 1 && firstNumber !== 1, execute: () => `${handleLessThan10(firstNumber)} ` },
+      { match: thousandsArray.length === 1 && firstNumber !== 1, execute: () => `${handleOnes(firstNumber)} ` },
       {
         match: thousandsArray.length === 2,
-        execute: () => `${handleTwoDigits(firstNumber)} `,
+        execute: () => `${handleTens(firstNumber)} `,
       },
       {
         match: thousandsArray.length === 3,
-        execute: () => `${handleThreeDigits(firstNumber)} `,
+        execute: () => `${handleHundreds(firstNumber)} `,
       },
       {
         match: true,
@@ -124,15 +123,15 @@ export function integerToWords(number: number): string {
     const actionsLastPart: Action[] = [
       {
         match: lastNumberParts.length === 1 && lastNumber !== 0,
-        execute: () => `e ${handleLessThan10(lastNumber)}`,
+        execute: () => `e ${handleOnes(lastNumber)}`,
       },
       {
         match: lastNumberParts.length === 2,
-        execute: () => `e ${handleTwoDigits(lastNumber)}`,
+        execute: () => `e ${handleTens(lastNumber)}`,
       },
       {
         match: lastNumberParts.length === 3,
-        execute: () => handleThreeDigits(lastNumber),
+        execute: () => handleHundreds(lastNumber),
       },
       {
         match: true,
@@ -149,7 +148,7 @@ export function integerToWords(number: number): string {
     return newMessage;
   }
 
-  function handleMillion(number: number): string {
+  function handleMillions(number: number): string {
     const numberParts = number.toArray(String) as string[];
     const factor = 6;
 
@@ -158,12 +157,12 @@ export function integerToWords(number: number): string {
     const firstNumber = +millionsArray.join("");
     const lastNumber = +thousandsArray.map(Number).join("");
 
-    const handleFn = [handleLessThan10, handleTwoDigits, handleThreeDigits];
+    const handleFn = [handleOnes, handleTens, handleHundreds];
 
     const actionsFirstPart: Action[] = [
       {
         match: millionsArray.length === 1 && firstNumber === 1,
-        execute: () => `${handleLessThan10(firstNumber)} Milhão`,
+        execute: () => `${handleOnes(firstNumber)} Milhão`,
       },
       {
         match: [].generate(handleFn.length).includes(millionsArray.length) && firstNumber !== 1,
@@ -177,10 +176,10 @@ export function integerToWords(number: number): string {
 
     const actionFirstPart = actionsFirstPart.find((action) => action.match);
     const firstPartMessage = actionFirstPart.execute();
-    return `${firstPartMessage} ${handleThousand(lastNumber)}`.trim();
+    return `${firstPartMessage} ${handleThousands(lastNumber)}`.trim();
   }
 
-  function handleBillion(number: number): string {
+  function handleBillions(number: number): string {
     const numberParts = number.toArray(String) as string[];
     const factor = 9;
 
@@ -192,19 +191,19 @@ export function integerToWords(number: number): string {
     const actionsFirstPart: Action[] = [
       {
         match: billionsArray.length === 1 && firstNumber === 1,
-        execute: () => `${handleLessThan10(firstNumber)} Bilhão`,
+        execute: () => `${handleOnes(firstNumber)} Bilhão`,
       },
       {
         match: billionsArray.length === 1 && firstNumber !== 1,
-        execute: () => `${handleLessThan10(firstNumber)} Bilhões`,
+        execute: () => `${handleOnes(firstNumber)} Bilhões`,
       },
       {
         match: billionsArray.length === 2,
-        execute: () => `${handleTwoDigits(firstNumber)} Bilhões`,
+        execute: () => `${handleTens(firstNumber)} Bilhões`,
       },
       {
         match: billionsArray.length === 3,
-        execute: () => `${handleThreeDigits(firstNumber)} Bilhões`,
+        execute: () => `${handleHundreds(firstNumber)} Bilhões`,
       },
       {
         match: true,
@@ -214,7 +213,7 @@ export function integerToWords(number: number): string {
 
     const actionFirstPart = actionsFirstPart.find((action) => action.match);
     const firstPartMessage = actionFirstPart.execute();
-    return `${firstPartMessage} ${handleMillion(lastNumber)}`.trim();
+    return `${firstPartMessage} ${handleMillions(lastNumber)}`.trim();
   }
   return message;
 }
